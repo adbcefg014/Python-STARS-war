@@ -1,5 +1,7 @@
 Last updated by JohnsonW 16-6-2022 for Windows 10, Chrome browser
 
+This was created in December 2021 for use in the NTU STARS, and then further revised in March 2022 & June 2022. The first and second versions work by waiting for the desired time, then take a screenshot to look for where the targeted buttons are on the screen, and then clicking it, and then repeating the previous steps as necessary. Third version or the initial commit version changes the method by using selenium to open the webpage near the desired time, logs in and finds the web element by XPath to then click it.
+
 Program set-up notes:
 0) Is Python in PATH? 
 to check: open command prompt & type where python, if yes will see python.exe location, else see 0a onwards
