@@ -1,6 +1,7 @@
 Last updated by JohnsonW 2-12-2022 for Windows 10, Chrome browser (Chrome only)
 
-This was created in for use in the NTU STARS. For testing purposes, you can change the variable testing from False to True, near the top of the file
+This was created in for use in the NTU STARS. 
+For testing purposes, you can change the variable testing from False to True, near the top of the file
 
 Program set-up notes:
 0) Is Python in PATH? 
