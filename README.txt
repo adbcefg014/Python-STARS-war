@@ -21,6 +21,7 @@ to check: open command prompt & type where python, if yes will see python.exe lo
 3) Update username.txt to Studentlink login username
 4) Update password.txt to Studentlink login password
 
+(main folder)
 5) Run program.py
 6) Enter <ENTER> to end program
 
