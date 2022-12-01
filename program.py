@@ -1,21 +1,28 @@
-import time, os
+import time, os, traceback, chromedriver_autoinstaller
 from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
+# for testing, change the following variable to True, otherwise False
+testing = True
+
 # Main Program, refer to README.txt for execution flow
-# for testing comment out "time.sleep" in steps 2, 4, 6, 8
 def main():
-    # Step 1
+    # Step 1: gets information from .txt files & install related chrome webdriver
+    os.system('cmd /c "pip install -r requirements.txt"')
     program_setup()
-    s = Service(chromedriver_path)
-    driver = webdriver.Chrome(service=s)
+    chromedriver_autoinstaller.install()  # Check if the current version of chromedriver exists
+                                        # and if it doesn't exist, download it automatically,
+                                        # then add chromedriver to path
+    driver = webdriver.Chrome()
+    driver.minimize_window();
 
     # Step 2
     seconds2time = seconds_left()
-    time.sleep(seconds2time - 59.0)
+    if not testing:
+        time.sleep(seconds2time - 59.0)
 
     # Step 3
     driver.get("https://time.is")
@@ -32,7 +39,8 @@ def main():
 
     # Step 4
     seconds2time = seconds_left()
-    time.sleep(seconds2time - 20.0)
+    if not testing:
+        time.sleep(seconds2time - 20.0)
 
     # Step 5
     form_url = "https://wish.wis.ntu.edu.sg/pls/webexe/ldap_login.login?w_url=https://wish.wis.ntu.edu.sg/pls/webexe/aus_stars_planner.main"
@@ -50,14 +58,16 @@ def main():
 
     # Step 6
     seconds2time = seconds_left()
-    time.sleep(seconds2time - 3.0)
+    if not testing:
+        time.sleep(seconds2time - 3.0)
 
     # Step 7
     submit_button1 = driver.find_element(By.XPATH, "//input[@type='submit' and @value='Add (Register) Selected Course(s)']")
 
     # Step 8
     seconds2time = seconds_left()
-    time.sleep(seconds2time + sync_delay + 0.1)
+    if not testing:
+        time.sleep(seconds2time + sync_delay + 0.1)
 
     # Step 9
     submit_button1.click()
@@ -72,11 +82,6 @@ def main():
 
 
 def program_setup():
-    # chromedriver file directory
-    global chromedriver_path
-    path = os.getcwd()
-    chromedriver_path = path  + "\\config\\chromedriver.exe"
-
     # Birth of the Button Click Target Time
     with open('config/strike_time.txt') as f:
         content = f.read()
@@ -113,4 +118,9 @@ def pause():
     return
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except:
+        with open("logs.txt", "a") as logfile:
+            traceback.print_exc(file=logfile)
+        raise
