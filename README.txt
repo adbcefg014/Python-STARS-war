@@ -24,6 +24,7 @@ to check: open command prompt & type where python, if yes will see python.exe lo
 (main folder)
 5) Run program.py
 6) Enter <ENTER> to end program
+6a) If browser window closes itself: an error occured, check logs.txt for message
 
 
 Program Execution Walkthrough:
