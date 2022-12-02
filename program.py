@@ -6,7 +6,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
 # for testing, change the following variable to True, otherwise False
-testing = True
+testing = False
 
 # Main Program, refer to README.txt for execution flow
 def main():
